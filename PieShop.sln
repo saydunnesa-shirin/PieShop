@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PieShop", "PieShop\PieShop.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PieShop.Service", "PieShop.Service\PieShop.Service.csproj", "{B0EC463B-E095-47C1-BD2E-CEBFBED9242C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PieShop.Test", "PieShop.Test\PieShop.Test.csproj", "{17D15417-AA26-45F5-98EC-0E66BE772E28}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PieShop.Service.Test", "PieShop.Test\PieShop.Service.Test.csproj", "{17D15417-AA26-45F5-98EC-0E66BE772E28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
