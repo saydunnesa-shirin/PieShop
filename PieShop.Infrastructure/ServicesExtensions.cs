@@ -16,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using PieShop.Database;
+using PieShop.Mappers;
 using PieShop.Utility;
 using System;
 using System.Collections.Generic;
@@ -154,7 +155,7 @@ namespace PieShop.Infrastructure
             containerBuilder.DatabaseDependencyResolver(appConfig);
             //containerBuilder.RepositoryDependencyResolver();
             //containerBuilder.ServiceDependencyResolver(appConfig);
-            //containerBuilder.MapperDependencyResolver();
+            containerBuilder.MapperDependencyResolver();
             //containerBuilder.FeaturesDependencyResolver(services);
             //containerBuilder.CoreDependencyResolver(appConfig);
             containerBuilder.Populate(services);

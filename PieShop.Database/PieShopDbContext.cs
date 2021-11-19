@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using PieShop.Models;
+using PieShop.Models.Auth;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -25,7 +27,16 @@ namespace PieShop.Database
         #endregion
 
         #region DbSet
-        //public virtual DbSet<Member> Members { get; set; }
+        //Auth
+        public DbSet<UserType> UserType { get; set; }
+        public DbSet<SystemUser> SystemUser { get; set; }
+        public DbSet<Models.Auth.Module> Module { get; set; }
+        public DbSet<AccessApi> AccessApi { get; set; }
+        public DbSet<Permission> Permission { get; set; }
+        public DbSet<SubModule> SubModule { get; set; }
+
+        public virtual DbSet<ProductCategory> ProductCategory { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
         #endregion
 
         #region Utilities

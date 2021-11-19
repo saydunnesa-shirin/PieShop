@@ -8,4 +8,9 @@
     <PackageReference Include="Autofac" Version="6.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PieShop.Models\PieShop.Models.csproj" />
+    <ProjectReference Include="..\PieShop.RequestModels\PieShop.RequestModels.csproj" />
+  </ItemGroup>
+
 </Project>
