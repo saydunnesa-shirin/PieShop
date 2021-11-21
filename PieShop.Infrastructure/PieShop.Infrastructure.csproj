@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PieShop.Core\PieShop.Core.csproj" />
     <ProjectReference Include="..\PieShop.Database\PieShop.Database.csproj" />
     <ProjectReference Include="..\PieShop.Mappers\PieShop.Mappers.csproj" />
     <ProjectReference Include="..\PieShop.Utility\PieShop.Utility.csproj" />

@@ -15,6 +15,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using PieShop.Core;
+using PieShop.Core.SignalR;
 using PieShop.Database;
 using PieShop.Mappers;
 using PieShop.Utility;
@@ -62,24 +64,26 @@ namespace PieShop.Infrastructure
         {
             //most of API providers require TLS 1.2 nowadays
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            //services.AddSingleton<IAuthorizationHandler, CustomAuthorizationHandler>();
-            //services.AddAuthorization(options =>
-            //{
-            //    options.AddPolicy("CustomHubAuthorizationPolicy", policy =>
-            //    {
-            //        policy.Requirements.Add(new CustomAuthorizationRequirement());
-            //    });
-            //});
+            services.AddSingleton<IAuthorizationHandler, CustomAuthorizationHandler>();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("CustomHubAuthorizationPolicy", policy =>
+                {
+                    policy.Requirements.Add(new CustomAuthorizationRequirement());
+                });
+
+            });
             //services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
-            //services.AddSignalR()
-            //    .AddJsonProtocol(options => {
-            //        options.PayloadSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-            //    })
-            //    .AddHubOptions<NotificationHub>(options =>
-            //    {
-            //        options.EnableDetailedErrors = true;
-            //        //options.AddFilter<AdminFilterAttribute>();
-            //    });
+            services.AddSignalR()
+                .AddJsonProtocol(options =>
+                {
+                    options.PayloadSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                })
+                .AddHubOptions<NotificationHub>(options =>
+                {
+                    options.EnableDetailedErrors = true;
+                    //options.AddFilter<AdminFilterAttribute>();
+                });
             //CQRS MediatR
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddCors(options =>
@@ -157,7 +161,7 @@ namespace PieShop.Infrastructure
             //containerBuilder.ServiceDependencyResolver(appConfig);
             containerBuilder.MapperDependencyResolver();
             //containerBuilder.FeaturesDependencyResolver(services);
-            //containerBuilder.CoreDependencyResolver(appConfig);
+            containerBuilder.CoreDependencyResolver(appConfig);
             containerBuilder.Populate(services);
             //create service provider
             return new AutofacServiceProvider(containerBuilder.Build());

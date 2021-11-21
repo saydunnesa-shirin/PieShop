@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http.Connections;
+using PieShop.Core.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,12 +34,12 @@ namespace PieShop.Infrastructure
             application.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                //endpoints.MapHub<NotificationHub>("/negotiate", options =>
-                //{
-                //    options.Transports =
-                //        HttpTransportType.WebSockets |
-                //        HttpTransportType.LongPolling;
-                //});
+                endpoints.MapHub<NotificationHub>("/negotiate", options =>
+                {
+                    options.Transports =
+                        HttpTransportType.WebSockets |
+                        HttpTransportType.LongPolling;
+                });
             });
             application.UseMvc();
         }
